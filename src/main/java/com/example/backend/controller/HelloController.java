@@ -12,13 +12,21 @@ public class HelloController {
 
     @GetMapping("/")
 
-    public  String helloBox(){
+    public User getUser(){
 
-     User user=new User();
-     return user.sayHello();
+     return new User("Alfred","lenge@gmail");
+     
 
     }
 
+    @PostMapping("/")
+
+    public User createUser(@RequestBody User user){
+
+     return user;
+     
+
+    }
 
     
 }
