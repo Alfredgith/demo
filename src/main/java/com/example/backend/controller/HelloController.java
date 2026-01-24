@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*") // allow Android
 public class HelloController {
 
-    @GetMapping
+    @GetMapping("/")
 
     public  String helloBox(){
 
