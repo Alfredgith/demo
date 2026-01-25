@@ -14,7 +14,7 @@ public class HelloController {
 
     public User getUser(){
 
-     return new User("Alfred","lenge@gmail");
+     return new User("Alfred999","lenge@gmail.com");
      
 
     }
