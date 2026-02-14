@@ -4,56 +4,72 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private String name;
-    
+    @Column(unique = true, nullable = false)
     private String email;
 
-    public User(){}
-    
-    public User(String name,String email) {
+    private String name;
 
-       this.name=name;
-       this.email=email;
+    private String provider;
 
+    private Role role ;
+
+    @Column(length = 500)
+    private String refreshToken;
+    public User() {}
+
+    public Long getId(){
+
+        return id;
     }
 
 
-    
-    public Long getId() { 
-      
-      
-      return id;
-   
-   
-   
-   }
     public String getName(){
 
-       return name;
-
+        return name;
     }
 
-     public void setName(String name){
+    public String getEmail(){
 
-         this.name=name;
-
+        return email;
     }
 
-      public String getEmail(){
+     
+    public String getProvider(){
 
-       return email;
-
+        return provider;
     }
+     public Role getRole(){
+
+        return role;
+    }
+
+
+
+    public void setName(String name){
+
+       this.name=name;
+    }
+
 
      public void setEmail(String email){
 
-         this.email=email;
-
+       this.email=email;
     }
+
+    
+     public void setProvider(String provider){
+
+       this.provider=provider;
+    }
+    public void setRole(Role role){
+
+       this.role=role;
+    }
+
+
+
 }
