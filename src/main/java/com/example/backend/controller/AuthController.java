@@ -1,59 +1,29 @@
 package com.example.backend.controller;
 
-import com.example.backend.model.Role;
-import com.example.backend.model.User;
-import com.example.backend.repository.UserRepository;
-import com.example.backend.config.JwtUtil;
-
+import com.example.backend.google.GoogleAuthServices;
+import com.example.backend.google.GoogleLoginRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    private final UserRepository userRepository;
-    private final JwtUtil jwtUtil;
+    private final GoogleAuthServices googleAuthServices;
 
-    public AuthController(UserRepository userRepository, JwtUtil jwtUtil) {
-        this.userRepository = userRepository;
-        this.jwtUtil = jwtUtil;
+    public AuthController(GoogleAuthServices googleAuthServices) {
+        this.googleAuthServices = googleAuthServices;
     }
 
-    @GetMapping("/success")
-    public ResponseEntity<?> success(Authentication authentication) {
+    @PostMapping("/google")
+    public ResponseEntity<?> googleLogin(@RequestBody GoogleLoginRequest request)
+            throws Exception {
+        String jwt = googleAuthServices.authenticate(request.getIdToken());
+        return ResponseEntity.ok(jwt);
+    }
 
-        OAuth2AuthenticationToken auth = (OAuth2AuthenticationToken) authentication;
-
-        String email = auth.getPrincipal().getAttribute("email");
-        String name = auth.getPrincipal().getAttribute("name");
-
-        User user = userRepository.findByEmail(email)
-                .orElseGet(() -> {
-                    User newUser = new User();
-                    newUser.setEmail(email);
-                    newUser.setName(name);
-                    newUser.setProvider("GOOGLE");
-                    newUser.setRole(Role.ROLE_USER); // ✅ DEFAULT ROLE
-                    return userRepository.save(newUser);
-                });
-
-        // ✅ MUST match JwtUtil.generateToken(String, String)
-        String token = jwtUtil.generateToken(
-                user.getEmail(),
-                user.getRole().name()
-        );
-
-        return ResponseEntity.ok(
-                Map.of(
-                        "token", token,
-                        "email", user.getEmail(),
-                        "role", user.getRole().name()
-                )
-        );
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout() {
+        return ResponseEntity.ok("Logged out");
     }
 }
