@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Table</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h2>User List</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tap : ${top}">
+        <td th:text="${tap.id}"></td>
+        <td th:text="${tap.product}"></td>
+        <td th:text="${tap.price}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
