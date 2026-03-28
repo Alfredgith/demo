@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class MyController {
 @GetMapping("/test")
 public String test() {
-    return "database connection test is success";
+    return "database connection test is success 11";
 }
 
 
