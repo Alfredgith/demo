@@ -3,40 +3,19 @@ package com.example.backend.model;
 
 
 public class User {
-    
-    private Long id;
-
-    private String email;
-
     private String name;
+    private int age;
 
+    public User() {}
 
-
-    
-    public User(Long id,String email,String name) {
-  
-        this.id=id;
-        this.name=name;
-        this.email=email;
-
-
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
-    public Long getId(){
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-        return id;
-    }
-
-
-    public String getName(){
-
-        return name;
-    }
-
-    public String getEmail(){
-
-        return email;
-    }
-
-     
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
 }
