@@ -13,7 +13,7 @@ public class UserController {
     // ✅ GET request
     @GetMapping("/user")
     public User getUser() {
-        return new User("Alfred", 25);
+        return new User("AlfredDauda", 250);
     }
 
     // ✅ POST request
