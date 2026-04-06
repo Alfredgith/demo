@@ -1,9 +1,7 @@
 package com.example.backend.controller;
 import com.example.backend.model.User;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
-import java.util.List;
+
 
 
 @RestController
