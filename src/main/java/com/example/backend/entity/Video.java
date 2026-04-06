@@ -27,6 +27,7 @@ public class Video {
     private String publicId;
 
     private String uploadedBy;
-
+    
+    @Builder.Default
     private Long views = 0L;
 }
