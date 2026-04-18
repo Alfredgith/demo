@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+.env
+C:\Users\Alfred\Desktop\demo\src\main\resources\application-dev.properties
