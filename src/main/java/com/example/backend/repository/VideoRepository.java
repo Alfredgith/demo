@@ -2,9 +2,8 @@ package com.example.backend.repository;
 import com.example.backend.entity.Video;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface VideoRepository extends JpaRepository<Video, Long> {
-    Optional<Video> findByTitle(String title);
+    List<Video> findAllByOrderByCreatedAtDesc();
 }
-
