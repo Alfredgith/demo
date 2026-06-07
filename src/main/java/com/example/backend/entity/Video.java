@@ -24,10 +24,12 @@ public class Video {
 
     public Video() {}
     public LocalDateTime getCreatedAt(){return createdAt;}
-    public void setCreatedAt(LocalDateTime createdAt) {this.createdAt=createdAt}
+    public void setCreatedAt(LocalDateTime createdAt) {this.createdAt=createdAt;}
     public String getVideoUrl() { return videoUrl; }
     public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
+    public String getUploadedBy() {return uploadedBy;}
 
+    
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 
