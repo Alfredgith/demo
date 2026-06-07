@@ -23,7 +23,8 @@ public class Video {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Video() {}
-
+    public LocalDateTime getCreatedAt(){return createdAt;}
+    public void setCreatedAt(LocalDateTime createdAt) {this.createdAt=createdAt}
     public String getVideoUrl() { return videoUrl; }
     public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
 
